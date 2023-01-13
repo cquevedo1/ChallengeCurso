@@ -2,11 +2,12 @@ package com.CristianQuevedo.ChallengeQuinto.modelo.Entidades;
 
 import java.util.List;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -16,10 +17,10 @@ import lombok.Data;
 @Table(name = "profesor")
 @Data
 public class Profesor {
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
 
     @Column(name = "nombre")
     private String nombre;
@@ -27,6 +28,14 @@ public class Profesor {
     @Column(name = "apellido")
     private String apellido;
 
+     //Se agrega la columna dni que no está solicitada, consultar si es correcto
+     @Column(name = "dni")
+     private String dni;
+
     @OneToMany(mappedBy = "profesor", fetch = FetchType.LAZY)
     private List<Curso> curso;
+
+    //Se utiliza para hacer un sofDelete
+    @Column(name = "alta")
+    private Boolean alta;
 }

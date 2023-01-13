@@ -2,11 +2,12 @@ package com.CristianQuevedo.ChallengeQuinto.modelo.Entidades;
 
 import java.util.List;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -18,10 +19,10 @@ import lombok.Data;
 @Table(name = "curso")
 @Data
 public class Curso {
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
 
     @Column(name = "nombre")
     private String nombre;
@@ -38,4 +39,8 @@ public class Curso {
 
     @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY)
     private List<Alumno> alumnos;
+
+    //Se utiliza para hacer un sofDelete
+    @Column(name = "alta")
+    private Boolean alta;
 }
