@@ -1,5 +1,7 @@
 package com.CristianQuevedo.ChallengeQuinto.modelo.Entidades;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -34,11 +36,12 @@ public class Curso {
     @Column(name = "turno")
     private String turno;
 
-    @Column(name = "horario")
-    private String horario;
+    //El horario de cursado se especifica mediante día y hora
+    @Column(name = "dia")
+    private LocalDate dia;
 
-    @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY)
-    private List<Alumno> alumnos;
+    @Column(name = "hora")
+    private LocalTime hora;
 
     //Se utiliza para hacer un sofDelete
     @Column(name = "alta")

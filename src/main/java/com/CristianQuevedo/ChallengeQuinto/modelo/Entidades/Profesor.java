@@ -32,9 +32,6 @@ public class Profesor {
      @Column(name = "dni")
      private String dni;
 
-    @OneToMany(mappedBy = "profesor", fetch = FetchType.LAZY)
-    private List<Curso> curso;
-
     //Se utiliza para hacer un sofDelete
     @Column(name = "alta")
     private Boolean alta;
