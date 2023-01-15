@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.CristianQuevedo.ChallengeQuinto.modelo.Entidades.Alumno;
-import com.CristianQuevedo.ChallengeQuinto.modelo.Entidades.Curso;
 import com.CristianQuevedo.ChallengeQuinto.repositorios.IAlumnoRepositorio;
 import com.CristianQuevedo.ChallengeQuinto.repositorios.ICursoRepositorio;
 
@@ -65,7 +64,9 @@ public class AlumnoServicio {
     }
 
     @Transactional
-    public void inscripcionCurso(String dniAlumno, String nombreCurso) throws Exception {
+    public void inscripcionCurso(
+            String dniAlumno,
+            String nombreCurso) throws Exception {
         validar(dniAlumno);
         Alumno alumno = alumnoRepositorio.findAlumnoByDni(dniAlumno);
         alumno.setCurso(cursoRepositorio.findCursoByNombre(nombreCurso));
@@ -75,7 +76,8 @@ public class AlumnoServicio {
 
     // ******************UPDATE***********************
     @Transactional
-    public void modificarAlumno(String id,
+    public void modificarAlumno(
+            String id,
             String nombre,
             String apellido,
             String dni,
@@ -85,7 +87,6 @@ public class AlumnoServicio {
             Boolean alta) {
 
         Alumno alumno = buscarAlumnoPorID(id);
-
         alumno.setNombre(nombre);
         alumno.setApellido(apellido);
         alumno.setDni(dni);
