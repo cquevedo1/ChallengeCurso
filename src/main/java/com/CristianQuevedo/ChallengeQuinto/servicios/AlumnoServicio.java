@@ -23,6 +23,11 @@ public class AlumnoServicio {
     ICursoRepositorio cursoRepositorio;
 
     // ****************************VALIDACION******************
+    /**
+     * 
+     * @param dni
+     * @throws Exception
+     */
     public void validar(String dni)
             throws Exception {
 
@@ -37,6 +42,9 @@ public class AlumnoServicio {
     }
 
     // ****************************CREACION******************
+    /**
+     * 
+     */
     @Transactional
     public void crearAlumno(
             String nombre,
@@ -99,6 +107,11 @@ public class AlumnoServicio {
     }
 
     // ************************BUSQUEDA O CONSULTA*******************
+    /**
+     * Buscar por dni
+     * @param dni
+     * @return
+     */
     public Alumno buscarAlumnoPorDNI(String dni) {
         Alumno existeAlumno = alumnoRepositorio.findAlumnoByDni(dni);
         if (existeAlumno != null) {
@@ -106,7 +119,11 @@ public class AlumnoServicio {
         }
         return null;
     }
-
+    /**
+     * Buscar por id
+     * @param id
+     * @return
+     */
     public Alumno buscarAlumnoPorID(String id) {
         Optional<Alumno> optionaAlumno = alumnoRepositorio.findById(id);
         Alumno alumno = optionaAlumno.get();
@@ -116,7 +133,11 @@ public class AlumnoServicio {
         System.out.println("No existe alumno con el ID ingresado");
         return null;
     }
-
+    /**
+     * Buscar por apellido
+     * @param apellido
+     * @return
+     */
     public List<Alumno> buscarAlumnoPorApellido(String apellido) {
         List<Alumno> existeAlumno = alumnoRepositorio.findAlumnoByApellido(apellido);
         if (existeAlumno != null) {
@@ -126,6 +147,11 @@ public class AlumnoServicio {
         return null;
     }
 
+    /**
+     * Buscar por nombre
+     * @param nombre
+     * @return
+     */
     public List<Alumno> buscarAlumnoPorNombre(String nombre) {
         List<Alumno> existeAlumno = alumnoRepositorio.findAlumnoByNombre(nombre);
         if (existeAlumno != null) {
@@ -136,6 +162,10 @@ public class AlumnoServicio {
     }
 
     // ***********************BAJA*****************(SOFT DELETE)
+    /**
+     * Soft delete
+     * @param id
+     */
     @Transactional
     public void bajaAlumno(String id) {
         Alumno alumno = buscarAlumnoPorID(id);
@@ -146,7 +176,10 @@ public class AlumnoServicio {
     }
 
     // ***********************AlTA*****************
-
+    /**
+     * Soft alta
+     * @param id
+     */
     @Transactional
     public void altaAlumno(String id) {
         Alumno alumno = buscarAlumnoPorID(id);

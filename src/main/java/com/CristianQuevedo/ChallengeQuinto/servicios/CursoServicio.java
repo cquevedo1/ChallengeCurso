@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.CristianQuevedo.ChallengeQuinto.modelo.Entidades.Alumno;
 import com.CristianQuevedo.ChallengeQuinto.modelo.Entidades.Curso;
 import com.CristianQuevedo.ChallengeQuinto.modelo.Entidades.Profesor;
+import com.CristianQuevedo.ChallengeQuinto.repositorios.IAlumnoRepositorio;
 import com.CristianQuevedo.ChallengeQuinto.repositorios.ICursoRepositorio;
 import com.CristianQuevedo.ChallengeQuinto.repositorios.IProfesorRepositorio;
 
@@ -22,6 +24,9 @@ public class CursoServicio {
 
     @Autowired
     IProfesorRepositorio profesorRepositorio;
+
+    @Autowired
+    IAlumnoRepositorio alumnoRepositorio;
    
 
     // ****************************VALIDACION******************
@@ -44,8 +49,22 @@ public class CursoServicio {
         }
 
     //****************************CREACION******************
+    /**
+     * 
+     * @param nombre
+     * @param dniProfesor
+     * @param turno
+     * @param dia
+     * @param hora
+     * @throws Exception
+     */
     @Transactional
-    public void agregarCurso(String nombre, String dniProfesor, String turno, LocalDate dia ,LocalTime hora) throws Exception{
+    public void crearCurso(
+        String nombre, 
+        String dniProfesor, 
+        String turno, 
+        LocalDate dia ,
+        LocalTime hora) throws Exception{
 
         validarDatos(dniProfesor);
         validarHorario(dia, hora);
@@ -66,8 +85,26 @@ public class CursoServicio {
 
 
     // ******************UPDATE***********************
+    /**
+     * Modificacion de datos del curso
+     * @param nombre
+     * @param dniProfesor
+     * @param turno
+     * @param dia
+     * @param hora
+     * @param alta
+     * @param id
+     * @throws Exception
+     */
     @Transactional
-    public void modificarCurso(String nombre, String dniProfesor, String turno, LocalDate dia, LocalTime hora, boolean alta, String id) throws Exception{
+    public void modificarCurso(
+        String nombre, 
+        String dniProfesor, 
+        String turno, 
+        LocalDate dia, 
+        LocalTime hora, 
+        boolean alta, 
+        String id) throws Exception{
         
         Optional<Curso> optionalCurso = cursoRepositorio.findById(id);
         Curso curso = optionalCurso.get();
@@ -86,6 +123,11 @@ public class CursoServicio {
 
     }
 
+    /**
+     * alta-baja de un curso
+     * @param id
+     * @param alta
+     */
     //***********************ALTA / BAJA*****************(SOFT CREATE - DELETE )
     @Transactional
     public void altaCurso(String id, boolean alta){
@@ -118,6 +160,10 @@ public class CursoServicio {
         String id = p.getId();
         return cursoRepositorio.findCursoByProfesor(id);
         
+    }
+
+    public List<Alumno> listarAlumnosCurso(String idCurso){
+        return alumnoRepositorio.findAlumnoByCurso(idCurso); 
     }
     
 }
