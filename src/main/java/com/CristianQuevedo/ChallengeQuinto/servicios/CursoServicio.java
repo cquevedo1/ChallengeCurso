@@ -142,26 +142,51 @@ public class CursoServicio {
     }
 
      //************************BUSQUEDA O CONSULTA*******************
+     /**
+      * Busqueda de curso por id
+      * @param id
+      * @return
+      */
     public Curso buscarPorID(String id){
         Optional<Curso> optionalCurso = cursoRepositorio.findById(id);
         Curso curso = optionalCurso.get();
         return curso;
     }
 
+   /**
+    * Buscar cursos por nombre del curso
+    * @param nombreCurso
+    * @return
+    */
     public Curso buscarCursoPorNombre(String nombreCurso){
         return cursoRepositorio.findCursoByNombre(nombreCurso);
     }
    
+   /**
+    * Buscar cursor por turno
+    * @param turno
+    * @return
+    */ 
     public List<Curso> buscarPorTurno(String turno){
         return cursoRepositorio.findCursoByTurno(turno);
     }
+
+   /**
+    * Buscar cursos por nombre del profesor
+    * @param dniProfesor
+    * @return
+    */
     public List<Curso> buscarCursoPorProfesor(String dniProfesor){
         Profesor p = profesorRepositorio.findProfesorByDni(dniProfesor);
         String id = p.getId();
         return cursoRepositorio.findCursoByProfesor(id);
         
     }
-
+    /**
+     * Listar alumnos por curso
+     * @param idCurso
+     * @return
+     */
     public List<Alumno> listarAlumnosCurso(String idCurso){
         return alumnoRepositorio.findAlumnoByCurso(idCurso); 
     }

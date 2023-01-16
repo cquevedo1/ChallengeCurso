@@ -28,6 +28,13 @@ public class ProfesorServicio {
     }
 
     // //****************************CREACION******************
+    /**
+     * Creación de un profesor
+     * @param nombre
+     * @param apellido
+     * @param dni
+     * @throws Exception
+     */
     @Transactional
     public void crearProfesor(
             String nombre,
@@ -46,6 +53,14 @@ public class ProfesorServicio {
     }
 
     // ******************UPDATE***********************
+    /**
+     * Actualizacion de los datos de un profesor
+     * @param id
+     * @param nombre
+     * @param apellido
+     * @param dni
+     * @param alta
+     */
     @Transactional
     public void modificarProfesor(
             String id,
@@ -65,6 +80,11 @@ public class ProfesorServicio {
     }
 
     // ************************BUSQUEDA O CONSULTA*******************
+    /**
+     * Busqueda de un profesor por dni
+     * @param dni
+     * @return
+     */
     public Profesor buscarProfesorPorDNI(String dni) {
         Profesor existeProfesor = profesorRepositorio.findProfesorByDni(dni);
         if (existeProfesor != null) {
@@ -73,6 +93,11 @@ public class ProfesorServicio {
         return null;
     }
 
+    /**
+     * Busqueda de un profesor por id
+     * @param id
+     * @return
+     */
     public Profesor buscarProfesorPorID(String id) {
         Optional<Profesor> optionaProfesor = profesorRepositorio.findById(id);
         Profesor profesor = optionaProfesor.get();
@@ -83,6 +108,11 @@ public class ProfesorServicio {
         return null;
     }
 
+    /**
+     * Listado de profesores por apellido
+     * @param apellido
+     * @return
+     */
     public List<Profesor> buscarprofesorPorApellido(String apellido) {
         List<Profesor> existeProfesor = profesorRepositorio.findProfesorByApellido(apellido);
         if (existeProfesor != null) {
@@ -92,6 +122,11 @@ public class ProfesorServicio {
         return null;
     }
 
+    /**
+     * Listado de profesores por nombre
+     * @param nombre
+     * @return
+     */
     public List<Profesor> buscarProfesorPorNombre(String nombre) {
         List<Profesor> existeProfesor = profesorRepositorio.findProfesorByNombre(nombre);
         if (existeProfesor != null) {
@@ -102,6 +137,10 @@ public class ProfesorServicio {
     }
 
     // ***********************BAJA*****************(SOFT DELETE)
+    /**
+     * Soft delete de un profesor
+     * @param id
+     */
     @Transactional
     public void bajaProfesor(String id) {
         Profesor profesor = buscarProfesorPorID(id);
@@ -113,6 +152,10 @@ public class ProfesorServicio {
 
     // ***********************AlTA*****************
 
+    /**
+     * aoft alta de un profesor
+     * @param id
+     */
     @Transactional
     public void altaProfesor(String id) {
         Profesor profesor = buscarProfesorPorID(id);

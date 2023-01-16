@@ -79,7 +79,13 @@ public class profesorController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-     //funcion para dar de alta
+  
+     /**
+      * funcion para dar de alta
+      *
+      * @param id
+      * @return
+      */
      @GetMapping("/alta-profesor") 
      public ResponseEntity<?> altaProfesor(@PathVariable("id") String id) {
          try {
@@ -91,7 +97,13 @@ public class profesorController {
          }
      }
  
-     // funcion para dar de baja
+   
+     /**
+      * funcion para dar de baja
+      *
+      * @param id
+      * @return
+      */
      @GetMapping("/baja-profesor") 
      public ResponseEntity<?> bajaProfesor(@PathVariable("id") String id) {
          try {

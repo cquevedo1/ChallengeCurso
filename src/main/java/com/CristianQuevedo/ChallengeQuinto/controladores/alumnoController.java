@@ -23,7 +23,16 @@ public class alumnoController {
     @Autowired
     AlumnoServicio alumnoServicio;
 
-    //creacion de alumno
+
+   /**
+    * creacion de alumno
+    * @param nombre
+    * @param apellido
+    * @param dni
+    * @param fechaNacimiento
+    * @param historia
+    * @return
+    */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> crearAlumno(
             String nombre,
@@ -44,7 +53,20 @@ public class alumnoController {
 
     }
 
-    //modificacion de datos del alumno
+    
+    /**
+     * modificacion de datos del alumno
+     * @param id
+     * @param nombre
+     * @param apellido
+     * @param dni
+     * @param fechaNacimiento
+     * @param historia
+     * @param nombreCurso
+     * @param alta
+     * @return
+     * @throws Exception
+     */
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> modificarAlumno(
             @PathVariable("id") String id,
@@ -60,7 +82,13 @@ public class alumnoController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    //inscripcion a un curso
+   /**
+    * Inscripcion a cursa
+    * @param id
+    * @param nombreCurso
+    * @return
+    * @throws Exception
+    */
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> inscribirAlumnoEnCurso(
             @PathVariable("id") String id,
@@ -70,14 +98,25 @@ public class alumnoController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    //Busqueda por id del alumno
+
+   /**
+    * Busqueda por id del alumno
+    * @param id
+    * @return
+    * @throws Exception
+    */
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> buscarAlumnoPorId(@PathVariable("id") String id) throws Exception{
         alumnoServicio.buscarAlumnoPorID(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    //funcion para dar de alta
+
+    /**
+     * funcion para dar de alta
+     * @param id
+     * @return
+     */
     @GetMapping("/alta-alumno") 
     public ResponseEntity<?> altaAlumno(@PathVariable("id") String id) {
         try {
@@ -89,7 +128,11 @@ public class alumnoController {
         }
     }
 
-    // funcion para dar de baja
+   /**
+    * funcion para dar de baja
+    * @param id
+    * @return
+    */
     @GetMapping("/baja-alumno") 
     public ResponseEntity<?> bajaAlumno(@PathVariable("id") String id) {
         try {
