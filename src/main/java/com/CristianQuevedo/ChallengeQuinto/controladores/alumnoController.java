@@ -83,23 +83,6 @@ public class alumnoController {
     }
 
    /**
-    * Inscripcion a cursa
-    * @param id
-    * @param nombreCurso
-    * @return
-    * @throws Exception
-    */
-    @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> inscribirAlumnoEnCurso(
-            @PathVariable("id") String id,
-            String nombreCurso)
-            throws Exception {
-        alumnoServicio.inscripcionCurso(id, nombreCurso);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-
-   /**
     * Busqueda por id del alumno
     * @param id
     * @return
