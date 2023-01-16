@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.CristianQuevedo.ChallengeQuinto.modelo.Entidades.Alumno;
-import com.CristianQuevedo.ChallengeQuinto.modelo.Entidades.Curso;
-import com.CristianQuevedo.ChallengeQuinto.modelo.Entidades.Profesor;
+import com.CristianQuevedo.ChallengeQuinto.modelo.entidades.Alumno;
+import com.CristianQuevedo.ChallengeQuinto.modelo.entidades.Curso;
+import com.CristianQuevedo.ChallengeQuinto.modelo.entidades.Profesor;
 import com.CristianQuevedo.ChallengeQuinto.repositorios.IAlumnoRepositorio;
 import com.CristianQuevedo.ChallengeQuinto.repositorios.ICursoRepositorio;
 import com.CristianQuevedo.ChallengeQuinto.repositorios.IProfesorRepositorio;

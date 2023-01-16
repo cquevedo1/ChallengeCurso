@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.CristianQuevedo.ChallengeQuinto.modelo.Entidades.Profesor;
+import com.CristianQuevedo.ChallengeQuinto.modelo.entidades.Profesor;
 import com.CristianQuevedo.ChallengeQuinto.repositorios.IProfesorRepositorio;
 
 @Service

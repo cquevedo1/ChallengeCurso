@@ -6,7 +6,7 @@ import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.CristianQuevedo.ChallengeQuinto.modelo.Entidades.Curso;
+import com.CristianQuevedo.ChallengeQuinto.modelo.entidades.Curso;
 
 public interface ICursoRepositorio extends JpaRepository<Curso, String>{
 
