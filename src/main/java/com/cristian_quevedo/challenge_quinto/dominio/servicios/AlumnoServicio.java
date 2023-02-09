@@ -1,4 +1,4 @@
-package com.cristian_quevedo.challenge_quinto.servicios;
+package com.cristian_quevedo.challenge_quinto.dominio.servicios;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -6,13 +6,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
-import com.cristian_quevedo.challenge_quinto.repositorios.IAlumnoRepositorio;
-import com.cristian_quevedo.challenge_quinto.repositorios.ICursoRepositorio;
+import com.cristian_quevedo.challenge_quinto.dominio.repositorios.IAlumnoRepositorio;
+import com.cristian_quevedo.challenge_quinto.dominio.repositorios.ICursoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cristian_quevedo.challenge_quinto.modelo.entidades.Alumno;
+import com.cristian_quevedo.challenge_quinto.persistencia.entidades.Alumno;
 
 @Service
 public class AlumnoServicio {

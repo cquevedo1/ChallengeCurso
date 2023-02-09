@@ -1,15 +1,15 @@
-package com.cristian_quevedo.challenge_quinto.servicios;
+package com.cristian_quevedo.challenge_quinto.dominio.servicios;
 
 
 import java.util.List;
 import java.util.Optional;
 
-import com.cristian_quevedo.challenge_quinto.repositorios.IProfesorRepositorio;
+import com.cristian_quevedo.challenge_quinto.dominio.repositorios.IProfesorRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cristian_quevedo.challenge_quinto.modelo.entidades.Profesor;
+import com.cristian_quevedo.challenge_quinto.persistencia.entidades.Profesor;
 
 @Service
 public class ProfesorServicio {

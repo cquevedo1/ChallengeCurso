@@ -1,4 +1,4 @@
-package com.cristian_quevedo.challenge_quinto.controladores;
+package com.cristian_quevedo.challenge_quinto.web.controladores;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

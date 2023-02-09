@@ -1,6 +1,7 @@
-package com.cristian_quevedo.challenge_quinto.modelo.entidades;
+package com.cristian_quevedo.challenge_quinto.persistencia.entidades;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -15,10 +16,9 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "alumno")
+@Table(name = "curso")
 @Data
-public class Alumno {
-    
+public class Curso {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -27,29 +27,21 @@ public class Alumno {
     @Column(name = "nombre")
     private String nombre;
 
-    //Se agrega la columna apellido que no está solicitada, consultar si es correcto
-    @Column(name = "apellido")
-    private String apellido;
-
-    //Se agrega la columna dni que no está solicitada, consultar si es correcto
-    @Column(name = "dni")
-    private String dni;
-
-    @Column(name = "edad")
-    private Integer edad;
-
-    @Column(name = "fecha_Nacimiento")
-    private LocalDate fechaNacimiento;
-
-    @Column(name = "historia")
-    private String historia;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="curso_id")
-    private Curso curso;
+    @JoinColumn(name="profesor_id")
+    private Profesor profesor;
+
+    @Column(name = "turno")
+    private String turno;
+
+    //El horario de cursado se especifica mediante día y hora
+    @Column(name = "dia")
+    private LocalDate dia;
+
+    @Column(name = "hora")
+    private LocalTime hora;
 
     //Se utiliza para hacer un sofDelete
     @Column(name = "alta")
     private Boolean alta;
-
 }

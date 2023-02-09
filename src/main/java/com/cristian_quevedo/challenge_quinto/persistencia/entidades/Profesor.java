@@ -1,4 +1,4 @@
-package com.cristian_quevedo.challenge_quinto.modelo.entidades;
+package com.cristian_quevedo.challenge_quinto.persistencia.entidades;
 
 import org.hibernate.annotations.GenericGenerator;
 

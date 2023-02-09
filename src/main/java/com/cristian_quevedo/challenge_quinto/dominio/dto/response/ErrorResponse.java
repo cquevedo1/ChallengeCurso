@@ -1,4 +1,4 @@
-package com.cristian_quevedo.challenge_quinto.modelo.response;
+package com.cristian_quevedo.challenge_quinto.dominio.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

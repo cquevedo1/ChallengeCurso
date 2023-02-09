@@ -1,9 +1,9 @@
-package com.cristian_quevedo.challenge_quinto.excepciones;
+package com.cristian_quevedo.challenge_quinto.dominio.excepciones;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.cristian_quevedo.challenge_quinto.modelo.response.ErrorResponse;
+import com.cristian_quevedo.challenge_quinto.dominio.dto.response.ErrorResponse;
 
 public class ExceptionCustomHandler {
     private static String messageDelete;

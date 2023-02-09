@@ -1,4 +1,4 @@
-package com.cristian_quevedo.challenge_quinto.controladores;
+package com.cristian_quevedo.challenge_quinto.web.controladores;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cristian_quevedo.challenge_quinto.excepciones.ExceptionCustomHandler;
-import com.cristian_quevedo.challenge_quinto.servicios.CursoServicio;
+import com.cristian_quevedo.challenge_quinto.dominio.excepciones.ExceptionCustomHandler;
+import com.cristian_quevedo.challenge_quinto.dominio.servicios.CursoServicio;
 
 @RestController
 @RequestMapping(value = "/curso")

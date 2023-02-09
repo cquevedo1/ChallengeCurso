@@ -1,4 +1,4 @@
-package com.cristian_quevedo.challenge_quinto.controladores;
+package com.cristian_quevedo.challenge_quinto.web.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,32 +12,40 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cristian_quevedo.challenge_quinto.excepciones.ExceptionCustomHandler;
-import com.cristian_quevedo.challenge_quinto.servicios.ProfesorServicio;
+import com.cristian_quevedo.challenge_quinto.dominio.excepciones.ExceptionCustomHandler;
+import com.cristian_quevedo.challenge_quinto.dominio.servicios.AlumnoServicio;
 
 @RestController
-@RequestMapping(value = "profesor")
+@RequestMapping(value = "alumno")
 @CrossOrigin(origins = "*")
-public class ProfesorController {
+public class AlumnoController {
 
     @Autowired
-    ProfesorServicio profesorServicio;
+    AlumnoServicio alumnoServicio;
 
-    /**
-     * creacion del profesor
-     * 
-     * @param nombre
-     * @param apellido
-     * @param dni
-     * @return
-     */
+
+   /**
+    * creacion de alumno
+    * @param nombre
+    * @param apellido
+    * @param dni
+    * @param fechaNacimiento
+    * @param historia
+    * @return
+    */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> crearProfesor(
+    public ResponseEntity<?> crearAlumno(
             String nombre,
             String apellido,
-            String dni) {
+            String dni,
+            String fechaNacimiento,
+            String historia) {
         try {
-            profesorServicio.crearProfesor(nombre, apellido, dni);
+            alumnoServicio.crearAlumno(nombre,
+                    apellido,
+                    dni,
+                    fechaNacimiento,
+                    historia);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception exception) {
             return ExceptionCustomHandler.throwError(HttpStatus.BAD_REQUEST, exception.getMessage());
@@ -45,52 +53,57 @@ public class ProfesorController {
 
     }
 
+    
     /**
-     * modificacion de datos del profesor
-     * 
+     * modificacion de datos del alumno
      * @param id
      * @param nombre
      * @param apellido
      * @param dni
+     * @param fechaNacimiento
+     * @param historia
+     * @param nombreCurso
      * @param alta
      * @return
      * @throws Exception
      */
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> modificarProfesor(
+    public ResponseEntity<?> modificarAlumno(
             @PathVariable("id") String id,
             String nombre,
             String apellido,
             String dni,
+            String fechaNacimiento,
+            String historia,
+            String nombreCurso,
             Boolean alta)
             throws Exception {
-        profesorServicio.modificarProfesor(apellido, nombre, apellido, dni, alta);
+        alumnoServicio.modificarAlumno(apellido, nombre, apellido, dni, fechaNacimiento, historia, nombreCurso, alta);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    /**
-     * Busqueda por id del profesor
-     * 
-     * @param id
-     * @return
-     * @throws Exception
-     */
+   /**
+    * Busqueda por id del alumno
+    * @param id
+    * @return
+    * @throws Exception
+    */
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> buscarProfesorPorId(@PathVariable("id") String id) throws Exception {
-        profesorServicio.buscarProfesorPorID(id);
+    public ResponseEntity<?> buscarAlumnoPorId(@PathVariable("id") String id) throws Exception{
+        alumnoServicio.buscarAlumnoPorID(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 
     /**
      * funcion para dar de alta
-     *
      * @param id
      * @return
      */
-    @GetMapping("/alta-profesor")
-    public ResponseEntity<?> altaProfesor(@PathVariable("id") String id) {
+    @GetMapping("/alta-alumno") 
+    public ResponseEntity<?> altaAlumno(@PathVariable("id") String id) {
         try {
-            profesorServicio.altaProfesor(id);
+            alumnoServicio.altaAlumno(id);
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (Exception e) {
             e.getMessage();
@@ -98,21 +111,19 @@ public class ProfesorController {
         }
     }
 
-    /**
-     * funcion para dar de baja
-     *
-     * @param id
-     * @return
-     */
-    @GetMapping("/baja-profesor")
-    public ResponseEntity<?> bajaProfesor(@PathVariable("id") String id) {
+   /**
+    * funcion para dar de baja
+    * @param id
+    * @return
+    */
+    @GetMapping("/baja-alumno") 
+    public ResponseEntity<?> bajaAlumno(@PathVariable("id") String id) {
         try {
-            profesorServicio.bajaProfesor(id);
+            alumnoServicio.bajaAlumno(id);
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (Exception e) {
             e.getMessage();
             return ExceptionCustomHandler.throwErrorNotFound(HttpStatus.NOT_FOUND, id);
         }
     }
-
 }
