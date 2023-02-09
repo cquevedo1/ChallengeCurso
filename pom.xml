@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.CristianQuevedo</groupId>
-	<artifactId>ChallengeQuinto</artifactId>
+	<artifactId>challenge_quinto</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ChallengeQuinto</name>
 	<description>Ejemplo de una escuela</description>

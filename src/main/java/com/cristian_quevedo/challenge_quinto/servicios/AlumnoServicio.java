@@ -32,7 +32,6 @@ public class AlumnoServicio {
             throws Exception {
 
         Alumno a = new Alumno();
-        a = null;
         a = alumnoRepositorio.findAlumnoByDni(dni);
         if (a != null && a.getDni() == dni) {
             throw new Exception("El DNI ya existe en la base de datos");
