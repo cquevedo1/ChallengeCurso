@@ -1,22 +1,24 @@
 package com.cristian_quevedo.challenge_quinto.persistencia.entidades;
 
+import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
+import java.util.List;
 
 @Entity
 @Table(name = "profesor")
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Profesor {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    @Column(name="id_profesor")
+    private String idProfesor;
 
     @Column(name = "nombre")
     private String nombre;
@@ -31,4 +33,7 @@ public class Profesor {
     //Se utiliza para hacer un sofDelete
     @Column(name = "alta")
     private Boolean alta;
+
+    @OneToMany(mappedBy = "profesor")
+    private List<CursosProfesor> cursos;
 }

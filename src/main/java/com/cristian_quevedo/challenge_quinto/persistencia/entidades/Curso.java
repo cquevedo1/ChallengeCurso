@@ -3,6 +3,7 @@ package com.cristian_quevedo.challenge_quinto.persistencia.entidades;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.Column;
@@ -13,16 +14,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
 
 @Entity
 @Table(name = "curso")
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Curso {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    @Column(name="id_curso")
+    private String idCurso;
 
     @Column(name = "nombre")
     private String nombre;

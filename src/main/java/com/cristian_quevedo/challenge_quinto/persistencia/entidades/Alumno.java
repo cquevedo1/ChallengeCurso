@@ -1,28 +1,28 @@
 package com.cristian_quevedo.challenge_quinto.persistencia.entidades;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.Data;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 @Entity
 @Table(name = "alumno")
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Alumno {
     
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    @Column(name="id_alumno")
+    private String idAlumno;
 
     @Column(name = "nombre")
     private String nombre;
@@ -44,9 +44,8 @@ public class Alumno {
     @Column(name = "historia")
     private String historia;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="curso_id")
-    private Curso curso;
+    @OneToMany(mappedBy = "alumno")
+    private List<CursosAlumno> cursos;
 
     //Se utiliza para hacer un sofDelete
     @Column(name = "alta")
